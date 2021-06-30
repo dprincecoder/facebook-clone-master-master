@@ -1,0 +1,27 @@
+.comment-header{
+    display: flex;
+   /* box-shadow: 0px 5px 7px 10px rgba(0, 0, 0, .20); */
+    /* box-shadow: 0px 0px 0px 4px #2e344e; */
+    padding: 5px;
+    background: #191d2b;
+    border-radius: 15px;
+}
+
+.comment-header > p {
+    font-size: 3px;
+    color: gray;
+}
+
+.comment-header-name{
+    margin: 0 1rem;
+}
+
+.comment-header-name > p{
+     font-size: 12px;
+    color: gray;
+}
+
+.comment-header-name > h3{
+     font-size: 14px;
+    color: #037fff;
+}
