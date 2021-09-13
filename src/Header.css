@@ -82,3 +82,15 @@
 .header-right{
     display: flex;
 }
+
+.logOut{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.logOut:hover{
+    color: #2e81f4;
+}

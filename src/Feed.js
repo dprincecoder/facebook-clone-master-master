@@ -38,7 +38,9 @@ const Feed = () => {
           timestamp={post.data.timestamp}
           username={post.data.username}
           image={post.data.image}
-          likeCount={post.data.likeCount} commentCount={post.data.commentCount}
+          likeCount={post.data.likeCount}
+          commentCount={post.data.commentCount}
+          liked={post.data.liked}
         />
       ))}
         

@@ -1,6 +1,6 @@
+import React from 'react';
 import { Button } from '@material-ui/core'
 import { Facebook } from '@material-ui/icons'
-import React from 'react';
 import './Login.css'
 import { auth, provider} from './Firebase'
 import { useStateValue } from './StateProvider';
@@ -17,6 +17,7 @@ const Login = () => {
                     type: actionTypes.SET_USER,
                     user: result.user,
                 });
+                 localStorage.setItem("user", JSON.stringify(result.user));
             })
             .catch(err => alert(err));
         

@@ -12,10 +12,17 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ForumIcon from '@material-ui/icons/Forum';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import { useStateValue } from './StateProvider';
+import { auth } from './Firebase';
 
 const Header = () => {
     //use usestate hook
-    const [{user}, dispatch] = useStateValue()
+    const [{ user }, dispatch] = useStateValue();
+    const handleLogOut = () => {
+			auth.signOut();
+        localStorage.setItem("user", null);
+        window.location.reload();
+        
+		};
     return (
         <div className="header">
             <div className="header-left">
@@ -61,6 +68,7 @@ const Header = () => {
                 <IconButton>
                     <ExpandMoreIcon/>
                 </IconButton>
+                <div className="logOut" onClick={handleLogOut}>LogOut</div>
             </div>
         </div>
     )

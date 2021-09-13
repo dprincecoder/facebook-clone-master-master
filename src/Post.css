@@ -64,8 +64,6 @@
 
 .share-body{
     padding: .5rem;
-    position: absolute;
-    bottom: 0;
     background-color: rgba(0, 0, 0, .40);
     width: 100%;
     display: none;
@@ -83,6 +81,7 @@
 
 .open-share .share-body{
     display: block;
+    z-index: 5;
 }
 
 .pop-up-comment{

@@ -31,7 +31,6 @@ const PostInput = () => {
           likeCount: 0,
           commentCount: 0,
         });
-
         setInput("");
         setImageUrl("");
     }
