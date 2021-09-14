@@ -12,24 +12,21 @@ export const likePost = async (
 ) => {
 	const userRef = DB.collection("posts").doc(postId);
 	const increment = firebase.firestore.FieldValue.increment(+1);
-	const decrement = firebase.firestore.FieldValue.increment(-1);
 
-	DB.collection("likedPosts").doc(postId).set({
+	
+	DB.collection("posts").doc(postId).collection("likes").doc(userAuthId).set({
 		userThatLiked: displayName,
-		// alreadyLiked: userAuthId,
-		timestamp: new Date(),
+		alreadyLiked: userAuthId,
 	});
-
-	const doc = await DB.collection("likedPosts").doc(postId).get();
-	const docUpdated = await DB.collection("likedPosts").doc(postId);
-	const { alreadyLiked } = doc.data();
-
-	if (alreadyLiked) {
-		userRef.update({ likeCount: decrement });
-		docUpdated.update({ alreadyLiked: null });
+	
+	const doc = await DB.collection("posts").doc(postId).collection('likes').doc(userAuthId).get();
+	// const { alreadyLiked } = doc.data();
+	
+	if (doc.exists) {
+		return;
 	} else {
-		userRef.update({ likeCount: increment });
-		docUpdated.update({ alreadyLiked: userAuthId });
+		
+		userRef.update({ likeCount: increment }); 
 	}
 };
 

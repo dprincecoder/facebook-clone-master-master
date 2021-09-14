@@ -23,13 +23,13 @@ const PostInput = () => {
 
         //push on to firebase db when user post something
         DB.collection("posts").add({
-          massage: input,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          profilePic: user.photoURL,
-          username: user.displayName,
-          image: imageUrl,
-          likeCount: 0,
-          commentCount: 0,
+            massage: input,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            profilePic: user.photoURL,
+            username: user.displayName,
+            image: imageUrl,
+            likeCount: 0,
+            commentCount: 0,
         });
         setInput("");
         setImageUrl("");
