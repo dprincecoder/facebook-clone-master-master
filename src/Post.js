@@ -26,7 +26,7 @@ import {
 import Comments from "./Comments";
 import { useStateValue } from "./StateProvider";
 import DB, { auth } from "./Firebase";
-import { likePost } from "./CustomHooks"
+import ShareButton, { likePost, boostPost } from "./CustomHooks"
 import firebase from "firebase";
 
 
@@ -43,7 +43,8 @@ const Post = ({
 }) => {
 	const [openShare, setOpenShare] = useState(false);
 	const [{ user }, dispatch] = useStateValue();
-	const [authuser, setAuthuser] = useState('');
+	const [userAuthId, setAuthuserId] = useState("");
+	const [displayName, setDisplayName] = useState("")
 
 	//toggle the react share button
 	const share = () => {
@@ -52,11 +53,23 @@ const Post = ({
 
 	useEffect(() => {
 		auth.onAuthStateChanged((userAuth) => {
-			const { displayName } = userAuth;
-			setAuthuser(displayName);
+			const { uid, displayName } = userAuth;
+			setDisplayName(displayName)
+			setAuthuserId(uid);
 		});
 	}, [])
 
+	const addMore = {
+		profilePic,
+		image,
+		username,
+		timestamp,
+		massage
+	};
+
+	const more = {
+		className: "share-body"
+	}
 
 	return (
 		<div className={`post ${openShare ? "open-share" : ""}`}>
@@ -80,7 +93,15 @@ const Post = ({
 				<div
 					className="post-option"
 					onClick={() =>
-						likePost(postId, DB, liked, firebase, username, authuser)
+						likePost(
+							postId,
+							DB,
+							liked,
+							firebase,
+							username,
+							userAuthId,
+							displayName
+						)
 					}>
 					{likeCount > 0 ? (
 						<>
@@ -91,6 +112,12 @@ const Post = ({
 						<ThumbUp />
 					)}
 				</div>
+				{likeCount > 3 && (
+					<div className="post-option" onClick={() => boostPost(DB, postId, {...addMore})}>
+					Boost
+					</div>
+				)
+				}
 				<div className="post-option">
 					{commentCount > 0 ? (
 						<>
@@ -109,7 +136,7 @@ const Post = ({
 					<ExpandMoreOutlined />
 				</div>
 			</div>
-			<div className="share-body">
+			<ShareButton {...more}>
 				<ul className="share-item">
 					<li className="share-list">
 						<FacebookShareButton title={username} quote={massage} url={image}>
@@ -142,7 +169,7 @@ const Post = ({
 						</TelegramShareButton>
 					</li>
 				</ul>
-			</div>
+			</ShareButton>
 			{/* comments */}
 			<hr />
 			<div className="pop-up-comment">
