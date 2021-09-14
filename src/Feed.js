@@ -40,7 +40,6 @@ const Feed = () => {
           image={post.data.image}
           likeCount={post.data.likeCount}
           commentCount={post.data.commentCount}
-          liked={post.data.liked}
         />
       ))}
         

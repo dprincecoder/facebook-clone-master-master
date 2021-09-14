@@ -1,32 +1,25 @@
-import React from 'react'
-
+//passing all the required arguments so these functions can work properly
 //like a post function
 export const likePost = async (
 	postId,
 	DB,
-	liked,
 	firebase,
-	username,
-	userAuthId,
-	displayName
+	displayName,
+	userAuthId
 ) => {
 	const userRef = DB.collection("posts").doc(postId);
 	const increment = firebase.firestore.FieldValue.increment(+1);
 
-	
-	DB.collection("posts").doc(postId).collection("likes").doc(userAuthId).set({
-		userThatLiked: displayName,
-		alreadyLiked: userAuthId,
-	});
-	
 	const doc = await DB.collection("posts").doc(postId).collection('likes').doc(userAuthId).get();
-	// const { alreadyLiked } = doc.data();
 	
 	if (doc.exists) {
 		return;
 	} else {
-		
-		userRef.update({ likeCount: increment }); 
+		userRef.update({ likeCount: increment });
+		DB.collection("posts").doc(postId).collection("likes").doc(userAuthId).set({
+			userThatLiked: displayName,
+			userThatLikedID: userAuthId,
+		});
 	}
 };
 

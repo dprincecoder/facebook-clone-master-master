@@ -39,7 +39,6 @@ const Post = ({
 	postId,
 	commentCount,
 	likeCount,
-	liked
 }) => {
 	const [openShare, setOpenShare] = useState(false);
 	const [{ user }, dispatch] = useStateValue();
@@ -50,7 +49,7 @@ const Post = ({
 	const share = () => {
 		setOpenShare(!openShare);
 	};
-
+	// let liked;
 	useEffect(() => {
 		auth.onAuthStateChanged((userAuth) => {
 			const { uid, displayName } = userAuth;
@@ -96,7 +95,6 @@ const Post = ({
 						likePost(
 							postId,
 							DB,
-							liked,
 							firebase,
 							username,
 							userAuthId,
