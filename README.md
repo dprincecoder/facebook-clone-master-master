@@ -68,3 +68,22 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Hi there! 
+When viewing your job description it really jumped out at me. 
+Because I have extensive experience in websites / webapp development using REACTJS, redux, api
+Implementing responsive webapp and fast loaded content. I have reviewed my calendar and I'm ready to get started immediately.
+
+I am able to offer you my services and create a very yet engaging website and even go ahead to add below features:
+ • very responsive website across all devices breakpoints
+• redux: for state management 
+• Create multiple pages add page navigation on your website using react-router-dom
+• Create login and registration form so users can securely login using REACTJS linking it to authentication providers. 
+• connect REACTJS website/webapp to backend and database.
+•using axios to fetch data from rest api. 
+
+I have included samples and links of my past projects. I am looking forward in discussing this project further with you. 
+
+https://home-finder-dprincecoder.vercel.app/ https://gpt3landing-page.netlify.app/
+https://storybook-04.web.app/users/login
+
+Best regards Prince
